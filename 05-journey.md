@@ -6,36 +6,8 @@
 
 ## 全程時序
 
-```mermaid
-sequenceDiagram
-  autonumber
-  actor PM
-  participant P as planning repo
-  participant C as Cartographer
-  participant R as Resolver
-  participant RS as Researcher
-  participant I as Implementer
-  participant RV as reviewer
-  participant CR as code repo
-  actor Eng as 工程師
-
-  PM->>P: 開 issue「客戶要能匯出月報 PDF」
-  C->>P: 開 map + 決策票(附封包),assign 給 PM
-  C->>P: 開 research 票「PDF 產生方案比較」
-  RS->>P: 查證、貼結果、關票
-  PM->>P: 決策票點 decision#58;b
-  R->>P: 記錄結論、關票、通知 map
-  C->>P: 收斂 map,霧清空 → 寫 spec
-  C->>CR: 切實作票(agent#58;queued)+ 整合分支 + integrate 票
-  Note over CR: promote-queued 把 frontier 票升成 agent#58;implement
-  I->>CR: 認領、派 subagent 實作、開批次 PR(draft)
-  I->>RV: 派 reviewer
-  RV->>CR: 直接修正、附 Merge Danger、轉 ready
-  I->>CR: 下一輪收割#58;本地重驗 → 合進整合分支 → 關票
-  Note over CR: 關票觸發 promote-queued,下一批醒來
-  I->>CR: integrate 票#58;合 main、跑全套、開 spec→main PR
-  Eng->>CR: 只細看「審這裡」,合併進 main
-```
+<div class="arch-embed" style="--h:690px;--h-wide:829px"><iframe src="diagrams/05-ticket-journey.html" loading="lazy" title="一張票從想法到 main"></iframe></div>
+<p class="arch-open"><a href="diagrams/05-ticket-journey.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 ## 逐站說明
 

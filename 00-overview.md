@@ -10,22 +10,8 @@
 
 ## 全流程一張圖
 
-```mermaid
-flowchart LR
-  idea["💡 想法<br/>planning issue"] --> map["🗺️ map<br/>Cartographer"]
-  map --> tickets["決策票<br/>附決策封包"]
-  tickets -->|"人點 decision:*"| resolved["✅ 已決定<br/>Resolver"]
-  tickets -.->|"AFK 查證"| research["🤖 Researcher"]
-  tickets -.->|"人說「畫」"| proto["🎨 Prototyper<br/>可點的原型頁"]
-  research -.-> map
-  proto -.-> tickets
-  resolved --> map
-  map -->|"決策全定"| spec["spec + 實作票<br/>Cartographer"]
-  spec --> impl["⚡ Implementer<br/>平行實作 → 批次 PR"]
-  impl --> review["🔍 reviewer agent<br/>直接修正 + 單向門判斷"]
-  review --> integ["整合分支 spec/*"]
-  integ --> pr["👀 spec→main PR<br/>人審這一張"]
-```
+<div class="arch-embed" style="--h:690px;--h-wide:829px"><iframe src="diagrams/00-pipeline.html" loading="lazy" title="wayfinder-loops 操作管線"></iframe></div>
+<p class="arch-open"><a href="diagrams/00-pipeline.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 ## 角色一覽
 

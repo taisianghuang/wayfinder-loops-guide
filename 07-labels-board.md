@@ -30,24 +30,8 @@
 
 ## 實作票的 label 生命週期
 
-```mermaid
-stateDiagram-v2
-  [*] --> queued: Cartographer 切票<br/>(依賴串好後最後貼)
-  queued --> implement: promote-queued<br/>blocker 全關
-  implement --> inprogress: Implementer 認領
-  inprogress --> inprogress: 開 draft PR → reviewer 轉 ready<br/>(label 保留,防止重撿)
-  inprogress --> closed: 收割#58;merge + 手動關票<br/>拔 in-progress 與 implement
-  inprogress --> blocked: 卡住 / 驗證紅 / 規格不符
-  implement --> blocked: 防呆不過<br/>(parent 不在 planning、缺 Integration-Branch)
-  blocked --> [*]: 人處理
-  closed --> [*]
-
-  state "agent:queued" as queued
-  state "agent:implement" as implement
-  state "agent:in-progress" as inprogress
-  state "agent:blocked" as blocked
-  state "已關閉(無 agent:* label)" as closed
-```
+<div class="arch-embed" style="--h:505px;--h-wide:591px"><iframe src="diagrams/07-impl-ticket-labels.html" loading="lazy" title="實作票的 label 生命週期"></iframe></div>
+<p class="arch-open"><a href="diagrams/07-impl-ticket-labels.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 PR 開完之後 `agent:in-progress` **刻意保留**:如果拔掉,票會同時符合「有 implement、沒被認領、沒 assignee」三個撿票條件,下一輪就被重做一次。
 

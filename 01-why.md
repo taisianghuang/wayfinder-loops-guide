@@ -35,13 +35,8 @@
 
 借用 Matt Pocock 在〈Fixing the PR Bottleneck〉(AI Engineer Paris 2026)的比喻:軟體工廠要有加速器,也要有煞車。煞車由便宜到昂貴依序是**自動檢查 → 自動審查 → 人類審查**。前兩層越強,第三層就越快、越少。
 
-```mermaid
-flowchart LR
-  a["本地 CI<br/>只花 CPU"] --> b["獨立 reviewer<br/>花 token"] --> c["人類審查<br/>花人的時間"]
-  style a fill:#e8f5e9
-  style b fill:#fff8e1
-  style c fill:#ffebee
-```
+<div class="arch-embed" style="--h:471px;--h-wide:547px"><iframe src="diagrams/01-three-brakes.html" loading="lazy" title="三層煞車:成本由低到高"></iframe></div>
+<p class="arch-open"><a href="diagrams/01-three-brakes.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 ## 跟「一般的 agent 協作」差在哪
 

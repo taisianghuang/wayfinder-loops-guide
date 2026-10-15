@@ -6,14 +6,8 @@
 
 ## 共同的一輪
 
-```mermaid
-flowchart LR
-  s0["第 0 步<br/>讀 wayfinder.yml"] --> s1["掃描<br/>gh 查 label"]
-  s1 --> s2["認領<br/>貼 agent:in-progress"]
-  s2 --> s3["派工<br/>subagent 做重活"]
-  s3 --> s4["驗收<br/>核對實況、不信自述"]
-  s4 --> s5["回報<br/>還在等人的票"]
-```
+<div class="arch-embed" style="--h:524px;--h-wide:614px"><iframe src="diagrams/04-loop-round.html" loading="lazy" title="每條 loop 每一輪的共同骨架"></iframe></div>
+<p class="arch-open"><a href="diagrams/04-loop-round.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 - **第 0 步**:每一輪先從 planning repo 讀 `wayfinder.yml`。讀不到就停,不猜預設值。
 - **派工**:讀檔、查證、寫 code 這些會留下大量殘渣的工作,一律交給 subagent。loop 本身只做掃描、認領、驗收、回報,所以 loop session 的 context 不會隨輪數膨脹。
@@ -52,16 +46,8 @@ flowchart LR
 
 **唯一把程式寫進 main 的 loop。** 一輪最多 K 張(預設 3,補驗的 PR 也算名額)。
 
-```mermaid
-flowchart TD
-  h["0. 收割<br/>ready 的批次 PR 本地合併重驗 → merge → 關票"] --> sm["0. 維護 spec→main PR<br/>落後 main 就合 main、重跑閘門"]
-  sm --> p["1. 撿票<br/>agent:implement、未認領、無 assignee"]
-  p --> g["2. 防呆<br/>blocker 全關?parent 在 planning?<br/>有 Integration-Branch?"]
-  g --> c["3. 依序認領、平行派工<br/>每張一個 subagent、各自 worktree"]
-  c --> r["3b. 每張 PR 開好 → 立刻派 reviewer"]
-  r --> v["4. 逐張驗收"]
-  v --> rep["5. 回報"]
-```
+<div class="arch-embed" style="--h:683px;--h-wide:821px"><iframe src="diagrams/04-implementer-round.html" loading="lazy" title="Implementer 一輪的順序"></iframe></div>
+<p class="arch-open"><a href="diagrams/04-implementer-round.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 - **依票的複雜度選模型**:機械改動用 haiku,一般實作用預設模型,跨模組推理或重試用上限模型。上限也失敗的票留給人,不無限重試。
 - **絕對不要多開 implementer loop 來取得平行度**:label 鎖沒有身分資訊,兩條 loop 會實作同一張票兩次。平行度靠「同一條 loop 依序認領、平行派工」取得。
