@@ -68,7 +68,7 @@ researcher 只做 AFK 工作。一輪最多處理 2 張決策票。
 
 ## implementer(15 分鐘)
 
-implementer 是唯一把程式寫進 main 的 loop。一輪最多處理 K 張實作票。K 的預設值是 3。補驗的 PR 也計入 K。
+implementer 實作實作票,並把批次 PR 合併到整合分支。整合 PR 由人合併。一輪最多處理 K 張實作票。K 的預設值是 3。補驗的 PR 也計入 K。
 
 <div class="arch-embed" style="--h:683px;--h-wide:821px"><iframe src="diagrams/04-implementer-round.html" loading="lazy" title="Implementer 一輪的順序"></iframe></div>
 <p class="arch-open"><a href="diagrams/04-implementer-round.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
@@ -100,7 +100,7 @@ reviewer 不是 loop。implementer 對每個批次 PR 派出一個 reviewer(`way
 
 | 項目 | 內容 |
 | --- | --- |
-| 審查依據 | 該 repo 的 `CODING_STANDARDS.md`(選用)、實作票的規格、三種會說謊的測試、Fowler smell baseline |
+| 審查依據 | 該 repo 的 `CODING_STANDARDS.md`(選用)、實作票的規格、測試是否驗證實際行為、Fowler smell baseline |
 | 確定的問題 | 直接修正。一個問題一個 commit,前綴 `review:` |
 | 有疑義的問題 | 不修正。在 PR 留言,最多 5 條,附檔案與行號 |
 | 規格嚴重不符 | 不修正。退回實作票,貼 `agent:blocked` |
