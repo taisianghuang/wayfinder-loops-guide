@@ -66,26 +66,8 @@ map 熟了之後,Cartographer 用 mattpocock 的 to-spec 寫成 spec,再用 to-t
 2. 每張實作票 body 第一行寫 `Integration-Branch: spec/<...>`,它的 PR base 就是這條分支,不是 main。
 3. 多切一張 **integrate-and-verify 票**,blocked-by 全部的批次票。它負責把 main 合進整合分支、跑全套測試、開 **spec→main** 的 PR 給人審。
 
-```mermaid
-gitGraph
-  commit id: "main"
-  branch spec/42-export
-  checkout spec/42-export
-  branch implement/issue-101
-  commit id: "票 101"
-  checkout spec/42-export
-  merge implement/issue-101 id: "收割 101"
-  branch implement/issue-102
-  commit id: "票 102"
-  checkout spec/42-export
-  merge implement/issue-102 id: "收割 102"
-  checkout main
-  commit id: "別的 spec 進 main"
-  checkout spec/42-export
-  merge main id: "integrate:合 main"
-  checkout main
-  merge spec/42-export id: "人審後合併"
-```
+<div class="arch-embed" style="--h:683px;--h-wide:821px"><iframe src="diagrams/02-spec-train-branches.html" loading="lazy" title="spec-train 分支流向"></iframe></div>
+<p class="arch-open"><a href="diagrams/02-spec-train-branches.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 好處是:一份 8 張票的 spec,人只需要審一次、合併一次,而不是八次。
 

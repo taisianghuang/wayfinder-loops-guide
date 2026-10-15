@@ -86,12 +86,8 @@ integrate 票開 spec→main PR 時,把所有批次 PR 的 Merge Danger 彙整�
 
 ## 每一層擋不住的,交給下一層
 
-```mermaid
-flowchart TB
-  a["CI 擋不住:測試本身在說謊"] --> b["reviewer 抓:三種會說謊的測試"]
-  c["reviewer 擋不住:設計取捨、不可逆風險"] --> d["人審:審這裡清單 + reviewer 留下的疑點"]
-  e["人反覆留同一種意見"] --> f["retro:把它變成 CI 規則或 CODING_STANDARDS 條目"]
-```
+<div class="arch-embed" style="--h:570px;--h-wide:674px"><iframe src="diagrams/06-what-each-layer-catches.html" loading="lazy" title="每一層擋不住的,交給下一層"></iframe></div>
+<p class="arch-open"><a href="diagrams/06-what-each-layer-catches.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 最後一列是[路線圖](11-roadmap.md)上的 retro:同一則審查意見,不應該寫第二次。
 

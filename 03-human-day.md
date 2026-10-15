@@ -26,14 +26,8 @@
 
 聊到發現整張票問錯了問題,就把票關成 **Not planned**,Cartographer 會把它退回地圖的霧裡重新規劃。
 
-```mermaid
-stateDiagram-v2
-  [*] --> 等你決定: Cartographer 開票並 assign 給你
-  等你決定 --> 已決定: 點 decision#58;a/b/c/approve<br/>或留言指名一個選項
-  等你決定 --> 討論中: 點 decision#58;discuss<br/>或留言提出疑慮
-  討論中 --> 等你決定: Resolver 回覆一則<br/>並拔掉 discuss
-  已決定 --> [*]: Resolver 記錄結論、關票
-```
+<div class="arch-embed" style="--h:512px;--h-wide:599px"><iframe src="diagrams/03-decision-ticket.html" loading="lazy" title="決策票在你手上的狀態"></iframe></div>
+<p class="arch-open"><a href="diagrams/03-decision-ticket.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 ## 動作三:審「👀 待你 review」的那一張 PR
 

@@ -24,11 +24,42 @@
       margin-right: 0.4rem;
       font-variant-numeric: tabular-nums;
     }
-    /* mermaid 圖置中、窄螢幕可橫捲 */
-    .markdown-section .mermaid {
-      text-align: center;
-      overflow-x: auto;
-      margin: 1.5em 0;
+    /* archify 互動圖:iframe 嵌入 */
+    .markdown-section .arch-embed {
+      margin: 1.5em 0 0.4em;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .markdown-section .arch-embed iframe {
+      display: block;
+      width: 100%;
+      height: var(--h, 720px);
+      border: 0;
+    }
+    /* 嵌入框突破正文寬度：手機用滿螢幕，有側欄時撐滿側欄右邊的內容區 */
+    .markdown-section .arch-embed,
+    .markdown-section .arch-open {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100vw - 32px);
+    }
+    @media (min-width: 768px) {
+      .markdown-section .arch-embed,
+      .markdown-section .arch-open {
+        width: min(1320px, calc(100vw - 300px - 64px));
+      }
+    }
+    @media (min-width: 1100px) {
+      .markdown-section .arch-embed iframe {
+        height: var(--h-wide, 820px);
+      }
+    }
+    .markdown-section .arch-open {
+      margin-top: 0;
+      text-align: right;
+      font-size: 0.85em;
     }
     .markdown-section table {
       display: block;
@@ -65,19 +96,12 @@
     };
   </script>
 
-  <!-- mermaid 要在 docsify-mermaid 之前載入 -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'strict' });
-  </script>
-
   <!-- docsify core -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
   <!-- plugins -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@3.0.0/dist/docsify-copy-code.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2.1.0/dist/docsify-pagination.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
   <!-- prism syntax components -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-yaml.min.js"></script>
