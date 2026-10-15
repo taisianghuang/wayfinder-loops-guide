@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="wayfinder-loops 報告書:用 GitHub Issues、Project 看板與五條 Claude Code /loop,把模糊想法推進到 PR,人只做決策與最後一次審查。" />
+  <title>wayfinder-loops 報告書</title>
+
+  <!-- docsify 官方 Vue 主題 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css" />
+
+  <style>
+    :root {
+      --theme-color: #42b883;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei',
+        'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    }
+    .sidebar .ch {
+      color: #42b883;
+      font-weight: 600;
+      margin-right: 0.4rem;
+      font-variant-numeric: tabular-nums;
+    }
+    /* mermaid 圖置中、窄螢幕可橫捲 */
+    .markdown-section .mermaid {
+      text-align: center;
+      overflow-x: auto;
+      margin: 1.5em 0;
+    }
+    .markdown-section table {
+      display: block;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">載入中…</div>
+
+  <script>
+    window.$docsify = {
+      name: 'wayfinder-loops',
+      repo: 'taisianghuang/wayfinder-loops-guide',
+      loadSidebar: true,
+      coverpage: true,
+      onlyCover: false,
+      homepage: '00-overview.md',
+      subMaxLevel: 2,
+      auto2top: true,
+      maxLevel: 3,
+      relativePath: true,
+      search: {
+        placeholder: '搜尋報告書…',
+        noData: '找不到結果',
+        depth: 3
+      },
+      pagination: {
+        previousText: '上一篇',
+        nextText: '下一篇',
+        crossChapter: true,
+        crossChapterText: true
+      }
+    };
+  </script>
+
+  <!-- mermaid 要在 docsify-mermaid 之前載入 -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'strict' });
+  </script>
+
+  <!-- docsify core -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
+  <!-- plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@3.0.0/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2.1.0/dist/docsify-pagination.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
+  <!-- prism syntax components -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+</body>
+</html>
