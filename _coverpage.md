@@ -7,4 +7,4 @@
 - 工程師只審查一個 integration PR
 
 [開始閱讀](00-overview.md)
-[GitHub](https://github.com/taisianghuang/wayfinder-loops-guide)
+[GitHub](https://github.com/taisianghuang/wayfinder-loops)
