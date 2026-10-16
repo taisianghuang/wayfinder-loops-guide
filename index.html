@@ -71,6 +71,26 @@
   <div id="app">載入中…</div>
 
   <script>
+    // 嵌入的 archify 圖只顯示圖本身：藏起說明卡片與節點索引(同網域才能注入)
+    function hideArchifyExtras(iframe) {
+      try {
+        var doc = iframe.contentDocument;
+        if (!doc || !doc.head || doc.getElementById('embed-trim')) return;
+        var style = doc.createElement('style');
+        style.id = 'embed-trim';
+        style.textContent = '.cards, .node-outline { display: none !important; } html, body { overflow: hidden !important; }';
+        doc.head.appendChild(style);
+      } catch (e) { /* 跨網域時保持原樣 */ }
+    }
+    function trimArchifyEmbeds(hook) {
+      hook.doneEach(function () {
+        document.querySelectorAll('.arch-embed iframe').forEach(function (iframe) {
+          iframe.addEventListener('load', function () { hideArchifyExtras(iframe); });
+          if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') hideArchifyExtras(iframe);
+        });
+      });
+    }
+
     window.$docsify = {
       name: 'wayfinder-loops',
       repo: 'taisianghuang/wayfinder-loops-guide',
@@ -87,6 +107,7 @@
         noData: '找不到結果',
         depth: 3
       },
+      plugins: [trimArchifyEmbeds],
       pagination: {
         previousText: '上一篇',
         nextText: '下一篇',

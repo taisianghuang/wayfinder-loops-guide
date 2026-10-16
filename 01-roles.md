@@ -19,7 +19,7 @@
 
 每條 loop 依頻率執行一輪。每一輪有五個步驟:掃描、認領、派工、驗收、回報。
 
-<div class="arch-embed" style="--h:524px;--h-wide:614px"><iframe src="diagrams/04-loop-round.html" loading="lazy" title="每條 loop 每一輪的共同骨架"></iframe></div>
+<div class="arch-embed" style="--h:524px;--h-wide:614px"><iframe scrolling="no" src="diagrams/04-loop-round.html" loading="lazy" title="每條 loop 每一輪的共同骨架"></iframe></div>
 <p class="arch-open"><a href="diagrams/04-loop-round.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 | 項目 | 規則 |
@@ -70,7 +70,7 @@ researcher 只做 AFK 工作。一輪最多處理 2 張決策票。
 
 implementer 實作實作票,並把批次 PR 合併到整合分支。整合 PR 由人合併。一輪最多處理 K 張實作票。K 的預設值是 3。補驗的 PR 也計入 K。
 
-<div class="arch-embed" style="--h:683px;--h-wide:821px"><iframe src="diagrams/04-implementer-round.html" loading="lazy" title="Implementer 一輪的順序"></iframe></div>
+<div class="arch-embed" style="--h:683px;--h-wide:821px"><iframe scrolling="no" src="diagrams/04-implementer-round.html" loading="lazy" title="Implementer 一輪的順序"></iframe></div>
 <p class="arch-open"><a href="diagrams/04-implementer-round.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 implementer 依實作票的複雜度選模型:
