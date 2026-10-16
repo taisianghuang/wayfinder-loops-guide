@@ -6,7 +6,7 @@
 
 ## 全程時序
 
-<div class="arch-embed" style="--h:690px;--h-wide:829px"><iframe src="diagrams/05-ticket-journey.html" loading="lazy" title="一張票從想法到 main"></iframe></div>
+<div class="arch-embed" style="--h:690px;--h-wide:829px"><iframe scrolling="no" src="diagrams/05-ticket-journey.html" loading="lazy" title="一張票從想法到 main"></iframe></div>
 <p class="arch-open"><a href="diagrams/05-ticket-journey.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 ## 各階段

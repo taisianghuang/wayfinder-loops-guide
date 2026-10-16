@@ -21,7 +21,7 @@ PM 提出想法並做決定。agent 開票、查證、實作、審查並收割�
 
 ## 流程
 
-<div class="arch-embed" style="--h:690px;--h-wide:829px"><iframe src="diagrams/00-pipeline.html" loading="lazy" title="wayfinder-loops 操作管線"></iframe></div>
+<div class="arch-embed" style="--h:690px;--h-wide:829px"><iframe scrolling="no" src="diagrams/00-pipeline.html" loading="lazy" title="wayfinder-loops 操作管線"></iframe></div>
 <p class="arch-open"><a href="diagrams/00-pipeline.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 ## 名詞

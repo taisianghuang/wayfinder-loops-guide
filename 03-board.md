@@ -88,7 +88,7 @@ resolver 把留言轉成 label,引用原句,再關閉決策票。留言沒有明
 
 cartographer 把這個問題退回 map 的霧,重新規劃。
 
-<div class="arch-embed" style="--h:512px;--h-wide:599px"><iframe src="diagrams/03-decision-ticket.html" loading="lazy" title="決策票在你手上的狀態"></iframe></div>
+<div class="arch-embed" style="--h:512px;--h-wide:599px"><iframe scrolling="no" src="diagrams/03-decision-ticket.html" loading="lazy" title="決策票在你手上的狀態"></iframe></div>
 <p class="arch-open"><a href="diagrams/03-decision-ticket.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 ### 動作三:審查整合 PR
@@ -190,7 +190,7 @@ resolver 記錄結論並關閉原型票。
 
 ## 實作票的 label 生命週期
 
-<div class="arch-embed" style="--h:505px;--h-wide:591px"><iframe src="diagrams/07-impl-ticket-labels.html" loading="lazy" title="實作票的 label 生命週期"></iframe></div>
+<div class="arch-embed" style="--h:505px;--h-wide:591px"><iframe scrolling="no" src="diagrams/07-impl-ticket-labels.html" loading="lazy" title="實作票的 label 生命週期"></iframe></div>
 <p class="arch-open"><a href="diagrams/07-impl-ticket-labels.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
 
 批次 PR 開啟後,`agent:in-progress` 保留到收割。原因:移除後,實作票同時符合三個處理條件(有 `agent:implement`、沒有被認領、沒有 assignee)。下一輪會再實作一次。
