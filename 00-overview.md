@@ -15,6 +15,8 @@ wayfinder-loops 有五條 loop 與一個 reviewer agent。agent 做開 ticket、
 
 wayfinder-loops 使用 [mattpocock/skills](https://github.com/mattpocock/skills) 的方法、Claude Code `/loop`、GitHub Issues、GitHub Project 看板與三個 GitHub Actions workflow。
 
+plugin 的原始碼在 [taisianghuang/wayfinder-loops](https://github.com/taisianghuang/wayfinder-loops),授權為 MIT。
+
 ## 一句話
 
 PM 提出想法並做決定。agent 開 ticket、查證、實作、審查並 harvest。工程師只審查一次。
