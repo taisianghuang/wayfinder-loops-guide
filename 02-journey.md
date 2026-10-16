@@ -1,6 +1,6 @@
 # 02 · 一張 ticket 從想法到 main
 
-> 本章給所有讀者。本章用一個虛構的例子,說明一個想法經過的每個階段。例子:PM 要讓客戶匯出月報 PDF。每個階段的標題後面是看板欄位。
+> 本章給所有讀者。本章說明一個功能需求從 issue 到合併進 main 經過的每個階段。每個階段的標題後面是看板欄位。
 
 ---
 
@@ -13,16 +13,17 @@
 
 ### 1. 想法進來(💡 收件匣)
 
-PM 在 planning repo 開一個 issue。內容可以只有一句話。這個 issue 沒有管線 label。`sync-project-status` 把它放進「💡 收件匣」。
+PM 在 planning repo 開一個 issue,提出一個功能需求。內容可以只有一句話。這個 issue 沒有管線 label。`sync-project-status` 把它放進「💡 收件匣」。
 
 ### 2. 建立 map(🗺️ 規劃中)
 
 cartographer 下一輪派一個 subagent。subagent 照 wayfinder 的流程,先確定目標,再列出所有未定問題:
 
-| 問題 | 處理 | 例子 |
-| --- | --- | --- |
-| 能精確描述 | 開成 decision ticket | 「PDF 在請求時同步產生,或在背景產生後寄信通知?」(grilling);「三個 PDF 函式庫的授權與中文字型支援」(research) |
-| 還不能精確描述 | 寫進 map 的 fog | 「之後可能要支援 Excel」 |
+| 問題 | 處理 |
+| --- | --- |
+| 能精確描述,要人選擇 | 開成 grilling decision ticket |
+| 能精確描述,要查外部事實 | 開成 research decision ticket |
+| 還不能精確描述 | 寫進 map 的 fog |
 
 原始 issue 留言連到 map,然後關閉。
 
@@ -30,24 +31,23 @@ cartographer 下一輪派一個 subagent。subagent 照 wayfinder 的流程,先�
 
 1. researcher 處理 research decision ticket。它貼回結論、來源與日期,然後關閉 decision ticket。
 2. PM 讀 grilling decision ticket 的 decision packet:
-   - 選項 A:同步產生。做法簡單。大報表會逾時。
-   - 選項 B:背景產生。要多一個 job 與一個通知。
-   - 建議:B。
-   - 決策樹:選 B 時,下一個問題是「通知用 email 或站內訊息」。
+   - 選項表:每個選項的做法與代價。
+   - 建議:其中一個選項,與理由。
+   - 決策樹:選每個選項之後,下一個問題是什麼。
 3. PM 貼 `decision:b`。
-4. resolver 在幾分鐘內記錄結論、關閉 decision ticket,並在 map 留言「建議畢業的 fog:通知管道」。
+4. resolver 在幾分鐘內記錄結論、關閉 decision ticket,並在 map 留言,列出可以畢業的 fog。
 
 ### 4. fog 清空,map 完成
 
-cartographer 整理留言,把「通知管道」開成新的 decision ticket。這個循環重複,直到 decision ticket 全部關閉、fog 清空。
+cartographer 整理留言,把可以畢業的 fog 開成新的 decision ticket。這個循環重複,直到 decision ticket 全部關閉、fog 清空。
 
 ### 5. spec 與 implementation ticket(📋 排隊中 → 🚀 可實作)
 
 cartographer 派一個 subagent。subagent 依序做:
 
 1. 寫 spec,放在 planning repo。
-2. 從 main 建 integration branch `spec/57-monthly-pdf`。
-3. 在正確的 code repo 開 implementation ticket(後端的 job 與 API、前端的按鈕與狀態)。每張 implementation ticket 第一行寫 `Integration-Branch: spec/57-monthly-pdf`。用 GitHub 原生 dependency 設定順序。
+2. 從 main 建 integration branch `spec/<編號>-<名稱>`。
+3. 在正確的 code repo 開 implementation ticket(例:後端的 API、前端的畫面)。每張 implementation ticket 第一行寫 `Integration-Branch: spec/<編號>-<名稱>`。用 GitHub 原生 dependency 設定順序。
 4. 開一張 integrate-and-verify ticket。它被所有批次的 implementation ticket 擋住(blocked-by)。
 5. 最後貼 `agent:queued`。
 
@@ -85,7 +85,7 @@ implementer 處理可以開始的 implementation ticket。每張 implementation 
 
 工程師開啟 integration PR。PR 內文最上方是:
 
-> **審這裡**:#214 `alembic/versions/…_add_report_jobs.py` — 新增資料表,最壞情況是 migration 在大表上鎖太久。其餘 5 張 PR 皆為 two-way door。
+> **審這裡**:#<PR 編號> `<檔案>` — 這個 batch PR 新增一個資料表。最壞情況:migration 在大表上鎖太久。其餘 batch PR 都是 two-way door。
 
 工程師細看這個檔案,快速看過其他變更,然後合併。spec ticket 與 integrate-and-verify ticket 自動關閉。
 
