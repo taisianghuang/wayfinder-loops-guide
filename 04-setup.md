@@ -22,6 +22,7 @@
 - code repo 沒有本機 CI 指令。batch PR 的驗證依賴這個指令。
 - 使用 GitHub 以外的 issue tracker。
 - 不能讓 agent 用你的 GitHub 帳號開 ticket 與開 PR。
+- 一台機器同時服務多個獨立專案,而且每個專案有自己的 planning repo 或 org。plugin 的設定只有一組,五條 loop 只服務一個 planning repo。多個專案可以共用同一個 planning repo:在 `wayfinder.yml` 的 `code_repos` 列出所有專案的 code repo。
 
 ### 工具與帳號
 
