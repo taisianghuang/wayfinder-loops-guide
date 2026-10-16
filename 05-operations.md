@@ -13,11 +13,11 @@
 | A | 互動式 `/loop`。每一輪累積在同一段對話中 | 全部五條 loop |
 | B | 每一輪開一個新的 headless `claude -p` session,執行完就結束 | resolver、cartographer、researcher |
 
-!> **警告**:每條 loop 只能有一個執行中的 session。兩個相同的 loop 會實作同一張實作票兩次。平行處理由 loop 內部派出的 subagent 做。
+!> **警告**:每條 loop 只能有一個執行中的 session。兩個相同的 loop 會實作同一張 implementation ticket 兩次。平行處理由 loop 內部派出的 subagent 做。
 
 ### 模式 A:互動式 `/loop`
 
-注意:resolver 的頻率必須高於 cartographer。原因:決策票關閉後,才出現新的霧。
+注意:resolver 的頻率必須高於 cartographer。原因:decision ticket 關閉後,才出現新的 fog。
 
 1. 開五個終端機。
 2. 在每個終端機,進入 `workspace_dir`,啟動 Claude Code。
@@ -26,9 +26,9 @@
    | 終端機 | 指令 | 用途 |
    | --- | --- | --- |
    | 1 | `/loop 10m /wayfinder-loops:resolver` | 頻率最高。人的決定要立刻處理 |
-   | 2 | `/loop 20m /wayfinder-loops:cartographer` | 開票、整理 map |
+   | 2 | `/loop 20m /wayfinder-loops:cartographer` | 開 ticket、整理 map |
    | 3 | `/loop 15m /wayfinder-loops:researcher` | AFK 查證 |
-   | 4 | `/loop 15m /wayfinder-loops:implementer` | 實作、審查、收割 |
+   | 4 | `/loop 15m /wayfinder-loops:implementer` | 實作、審查、harvest |
    | 5 | `/loop 30m /wayfinder-loops:prototyper` | 人要求原型後才工作。一輪一張 |
 
 注意:`/loop` 排程在 7 天後到期。session 必須一直開著。到期後,重新執行步驟 3。
@@ -59,11 +59,11 @@ loop 不保存狀態。狀態全部在 GitHub。所以每一輪可以開一個�
 | --- | --- | --- |
 | 看板卡片不移動 | Status 選項名稱不完全一致;或 repo 沒有設定 `PROJECT_URL` / `PROJECT_TOKEN` | 比對 [03 章](03-board.md#看板的-13-個欄位)的 13 個值。檢查 variables 與 secrets |
 | loop 看不到看板上的卡片 | 在看板上直接新增的卡片是 draft | 在卡片上按 **Convert to issue**,選 planning repo |
-| 實作票停在「📋 排隊中」 | blocker 關閉時沒有觸發升級(依賴是之後才加的) | 在該 repo 的 Actions 頁,手動執行 `promote-queued`。它重新檢查所有 `agent:queued` 實作票 |
-| `promote-queued` 失敗 | 沒有設定 `PLANNING_REPO` variable | 設定 `PLANNING_REPO`。沒有設定時,workflow 刻意失敗。否則所有有 parent 的實作票會被退回,而且沒有錯誤訊息 |
-| 實作票有 `agent:blocked` | 檢查不通過、本地 CI 紅、reviewer 判定規格不符、合併衝突 | 讀實作票上 `🤖 [implementer]` 或 `🤖 [reviewer]` 的留言。處理後移除 `agent:blocked` |
-| 整合 PR 的綠燈不可信 | main 有新的 commit。GitHub 不重跑 PR 上的 check | implementer 每一輪自動合併 main 並重跑閘門。確認它的回報寫著「落後 0、閘門綠」 |
-| 同一張實作票被實作兩次 | 同一條 loop 有兩個 session | 關閉一個 session |
+| implementation ticket 停在「📋 排隊中」 | blocker 關閉時沒有觸發升級(依賴是之後才加的) | 在該 repo 的 Actions 頁,手動執行 `promote-queued`。它重新檢查所有 `agent:queued` implementation ticket |
+| `promote-queued` 失敗 | 沒有設定 `PLANNING_REPO` variable | 設定 `PLANNING_REPO`。沒有設定時,workflow 刻意失敗。否則所有有 parent 的 implementation ticket 會被退回,而且沒有錯誤訊息 |
+| implementation ticket 有 `agent:blocked` | 檢查不通過、本地 CI 紅、reviewer 判定規格不符、合併衝突 | 讀 implementation ticket 上 `🤖 [implementer]` 或 `🤖 [reviewer]` 的留言。處理後移除 `agent:blocked` |
+| integration PR 的綠燈不可信 | main 有新的 commit。GitHub 不重跑 PR 上的 check | implementer 每一輪自動合併 main 並重跑閘門。確認它的回報寫著「落後 0、閘門綠」 |
+| 同一張 implementation ticket 被實作兩次 | 同一條 loop 有兩個 session | 關閉一個 session |
 | `gh` 指令失敗 | `gh` 版本低於 2.94,或 token 沒有 `project` scope | 升級 `gh`。執行 `gh auth refresh -s project` |
 
 ## 更新
