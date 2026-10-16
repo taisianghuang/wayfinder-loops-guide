@@ -1,6 +1,6 @@
 - [<span class="ch">00</span> 總覽](00-overview.md)
 - [<span class="ch">01</span> 六個角色](01-roles.md)
-- [<span class="ch">02</span> 一張票從想法到 main](02-journey.md)
+- [<span class="ch">02</span> 一張 ticket 從想法到 main](02-journey.md)
 - [<span class="ch">03</span> 用看板管理](03-board.md)
 - [<span class="ch">04</span> 建立工作流](04-setup.md)
 - [<span class="ch">05</span> 啟動與疑難排解](05-operations.md)
