@@ -17,10 +17,16 @@
 
 ## 每一輪的步驟
 
-每條 loop 依頻率執行一輪。每一輪有五個步驟:掃描、claim、派工、驗收、回報。
+每條 loop 依頻率執行一輪。每一輪依序做以下步驟:
 
-<div class="arch-embed" style="--h:524px;--h-wide:614px"><iframe scrolling="no" src="diagrams/04-loop-round.html" loading="lazy" title="每條 loop 每一輪的共同骨架"></iframe></div>
-<p class="arch-open"><a href="diagrams/04-loop-round.html" target="_blank" rel="noopener">全頁開啟這張圖 ↗</a></p>
+1. 讀 `wayfinder.yml`。讀不到時,停止。
+2. 掃描:用 `gh` 查 label,找出要處理的 ticket。沒有 ticket 時,跳到步驟 6。
+3. claim:貼 `agent:in-progress`。
+4. 派工:把工作交給 subagent。
+5. 驗收:到 GitHub 核對結果。
+6. 回報:列出還在等人的 ticket。
+
+各步驟的規則:
 
 | 項目 | 規則 |
 | --- | --- |
